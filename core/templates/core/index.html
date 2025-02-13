@@ -1,0 +1,940 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <header id="header" class="header sticky-top">
+
+    <div class="topbar d-flex align-items-center">
+      <div class="container d-flex justify-content-center justify-content-md-between">
+        <div class="contact-info d-flex align-items-center">
+            <i class="bi bi-envelope d-flex align-items-center">
+                <a href="mailto:contact@example.com">contact@medilab.com</a>
+            </i>
+            <i class="bi bi-phone d-flex align-items-center ms-4">
+                <span>+1 555-1234-567</span>
+            </i>
+        </div>
+
+        <div class="social-links d-none d-md-flex align-items-center">
+            <a href="#" class="twitter"><i class="bi bi-twitter-x"></i></a>
+            <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+
+            {% if user.is_authenticated %}
+                <!-- User Logged In: Show Profile Icon with Logout Option -->
+                <div class="dropdown ms-3">
+                    <a href="#" class="dropdown-toggle text-dark" id="userDropdown" data-bs-toggle="dropdown">
+                        <i class="bi bi-person-circle"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                        <li class="dropdown"><a href="{% url 'profile' %}"><span>Profile</span></a>
+                        <li class="dropdown"><a href="{% url 'logout' %}"><span>Logout</span></a>
+                    </ul>
+                </div>
+
+                <style>
+                  .dropdown-menu a {
+                    color: black !important;
+                  }
+                </style>
+
+            {% else %}
+                <!-- User Not Logged In: Show Login & Register Icons -->
+                <a href="{% url 'login' %}" class="ms-3"><i class="bi bi-box-arrow-in-right"></i></a>
+                <a href="{% url 'register' %}" class="ms-3"><i class="bi bi-person-plus"></i></a>
+            {% endif %}
+        </div>
+    </div>
+  </div> <!-- End Top Bar -->
+  
+
+    <div class="branding d-flex align-items-center">
+
+      <div class="container position-relative d-flex align-items-center justify-content-between">
+        <a href="{% url 'index' %}" class="logo d-flex align-items-center me-auto">
+          <!-- Uncomment the line below if you also wish to use an image logo -->
+          <!-- <img src="assets/img/logo.png" alt=""> -->
+          <h1 class="sitename">Medilab</h1>
+        </a>
+
+        <nav id="navmenu" class="navmenu">
+          <ul>
+            <li><a href="#hero" class="active">Home<br></a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#departments">Departments</a></li>
+            <li><a href="#doctors">Doctors</a></li>
+
+            {% comment %} <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+              <ul>
+                <li><a href="#">Dropdown 1</a></li>
+                <li><a href="#">Dropdown 2</a></li>
+                <li><a href="#">Dropdown 3</a></li>
+                <li><a href="#">Dropdown 4</a></li>
+              </ul>
+            </li> {% endcomment %}
+
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+          <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+        </nav>
+
+        <a class="cta-btn d-none d-sm-block" href="#appointment">Make an Appointment</a>
+
+      </div>
+
+    </div>
+
+  </header>
+
+  <main class="main">
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero section light-background">
+
+      <img src="images/hero-bg.jpg" alt="Hospital Background" data-aos="fade-in">
+    
+      <div class="container position-relative">
+    
+        <div class="welcome position-relative" data-aos="fade-down" data-aos-delay="100">
+          <h2>WELCOME TO MEDILAB</h2>
+          <p>Providing compassionate, high-quality healthcare with cutting-edge technology and expert care.</p>
+        </div><!-- End Welcome -->
+    
+        <div class="content row gy-4">
+          <div class="col-lg-4 d-flex align-items-stretch">
+            <div class="why-box" data-aos="zoom-out" data-aos-delay="200">
+              <h3>Why Choose MediLab?</h3>
+              <p>
+                At MediLab, we prioritize your health with state-of-the-art facilities, expert doctors, and patient-centered care. Our commitment to excellence and innovation ensures that you receive the best medical treatments in a comfortable and safe environment.
+              </p>
+              <div class="text-center">
+                <a href="#about" class="more-btn"><span>Learn More</span> <i class="bi bi-chevron-right"></i></a>
+              </div>
+            </div>
+          </div><!-- End Why Box -->
+    
+          <div class="col-lg-8 d-flex align-items-stretch">
+            <div class="d-flex flex-column justify-content-center">
+              <div class="row gy-4">
+    
+                <div class="col-xl-4 d-flex align-items-stretch">
+                  <div class="icon-box" data-aos="zoom-out" data-aos-delay="300">
+                    <i class="bi bi-clipboard-data"></i>
+                    <h4>Advanced Diagnostics</h4>
+                    <p>We utilize cutting-edge diagnostic tools and laboratory tests for early disease detection and accurate treatments.</p>
+                  </div>
+                </div><!-- End Icon Box -->
+    
+                <div class="col-xl-4 d-flex align-items-stretch">
+                  <div class="icon-box" data-aos="zoom-out" data-aos-delay="400">
+                    <i class="bi bi-gem"></i>
+                    <h4>Expert Medical Team</h4>
+                    <p>Our ighly skilled doctors, nurses, and specialists are dedicated to delivering exceptional patient care.</p>
+                  </div>
+                </div><!-- End Icon Box -->
+    
+                <div class="col-xl-4 d-flex align-items-stretch">
+                  <div class="icon-box" data-aos="zoom-out" data-aos-delay="500">
+                    <i class="bi bi-inboxes"></i>
+                    <h4>Comprehensive Healthcare</h4>
+                    <p>From preventive care to advanced treatments, we offer a wide range of medical services tailored to your needs.</p>
+                  </div>
+                </div><!-- End Icon Box -->
+    
+              </div>
+            </div>
+          </div>
+        </div><!-- End Content -->
+    
+      </div>
+    
+    </section><!-- /Hero Section -->
+    
+    <!-- About Section -->
+    <section id="about" class="about section">
+
+      <div class="container">
+
+        <div class="row gy-4 gx-5">
+
+          <div class="col-lg-6 position-relative align-self-start" data-aos="fade-up" data-aos-delay="200">
+            <img src="images/about.jpg" class="img-fluid" alt="">
+            <a href="https://youtu.be/gVQETWmgO4A?si=_f7-12lB7mFbq4t2" class="glightbox pulsating-play-btn"></a>
+          </div>
+
+          <div class="col-lg-6 content" data-aos="fade-up" data-aos-delay="100">
+            <h3>About Us</h3>
+            <p>
+                Welcome to Medilab, where innovation meets excellence. We are committed to providing top-tier services with integrity, professionalism, and a passion for making a difference. Our team works tirelessly to deliver solutions tailored to your needs, ensuring a seamless and enriching experience.
+            </p>
+            <ul>
+                <li>
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <h5>Commitment to Quality</h5>
+                        <p>We uphold the highest standards, ensuring precision, reliability, and outstanding results in everything we do.</p>
+                    </div>
+                </li>
+                <li>
+                    <i class="fa-solid fa-pump-medical"></i>
+                    <div>
+                        <h5>Innovation & Excellence</h5>
+                        <p>Our team continuously explores new ideas, adopting cutting-edge solutions to meet the evolving needs of our clients.</p>
+                    </div>
+                </li>
+                <li>
+                    <i class="fa-solid fa-heart-circle-xmark"></i>
+                    <div>
+                        <h5>Customer-Centric Approach</h5>
+                        <p>Your satisfaction is our priority. We strive to build lasting relationships by delivering exceptional value and support.</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        
+
+        </div>
+
+      </div>
+
+    </section><!-- /About Section -->
+
+    <!-- Stats Section -->
+    <section id="stats" class="stats section light-background">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-3 col-md-6 d-flex flex-column align-items-center">
+            <i class="fa-solid fa-user-doctor"></i>
+            <div class="stats-item">
+              <span data-purecounter-start="0" data-purecounter-end="{{ doctors.count }}" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Doctors</p>
+            </div>
+          </div><!-- End Stats Item -->
+
+          <div class="col-lg-3 col-md-6 d-flex flex-column align-items-center">
+            <i class="fa-regular fa-hospital"></i>
+            <div class="stats-item">
+              <span data-purecounter-start="0" data-purecounter-end="{{ departments.count }}" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Departments</p>
+            </div>
+          </div><!-- End Stats Item -->
+
+          <div class="col-lg-3 col-md-6 d-flex flex-column align-items-center">
+            <i class="fas fa-flask"></i>
+            <div class="stats-item">
+              <span data-purecounter-start="0" data-purecounter-end="12" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Research Labs</p>
+            </div>
+          </div><!-- End Stats Item -->
+
+          <div class="col-lg-3 col-md-6 d-flex flex-column align-items-center">
+            <i class="fas fa-award"></i>
+            <div class="stats-item">
+              <span data-purecounter-start="0" data-purecounter-end="150" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Awards</p>
+            </div>
+          </div><!-- End Stats Item -->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Stats Section -->
+
+    <!-- Services Section -->
+    <section id="services" class="services section light-background">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Our Medical Services</h2>
+        <p>Providing high-quality healthcare solutions with excellence, compassion, and innovation.</p>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+        <div class="row gy-4">
+          
+          <!-- Cardiology -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-item position-relative">
+              <div class="icon"><i class="fas fa-heartbeat"></i></div>
+              <h3><a href="#" class="stretched-link">Cardiology</a></h3>
+              <p>Expert heart care, including diagnosis, treatment, and prevention of cardiovascular diseases.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <!-- Emergency Care -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-item position-relative">
+              <div class="icon"><i class="fas fa-ambulance"></i></div>
+              <h3><a href="#" class="stretched-link">Emergency Medicine</a></h3>
+              <p>24/7 emergency care for critical injuries and life-threatening conditions.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <!-- Pediatrics -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="service-item position-relative">
+              <div class="icon"><i class="fas fa-baby"></i></div>
+              <h3><a href="#" class="stretched-link">Pediatrics</a></h3>
+              <p>Comprehensive healthcare for infants, children, and adolescents.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <!-- Orthopedics -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
+            <div class="service-item position-relative">
+              <div class="icon"><i class="fas fa-bone"></i></div>
+              <h3><a href="#" class="stretched-link">Orthopedics</a></h3>
+              <p>Advanced treatment for bone, joint, and muscle conditions.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <!-- Oncology -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
+            <div class="service-item position-relative">
+              <div class="icon"><i class="fas fa-ribbon"></i></div>
+              <h3><a href="#" class="stretched-link">Oncology</a></h3>
+              <p>Comprehensive cancer diagnosis, treatment, and patient support.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <!-- Diagnostic Imaging -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
+            <div class="service-item position-relative">
+              <div class="icon"><i class="fas fa-x-ray"></i></div>
+              <h3><a href="#" class="stretched-link">Diagnostic Imaging</a></h3>
+              <p>Advanced imaging services, including X-rays, MRIs, and CT scans.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <!-- Dental Services -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="700">
+            <div class="service-item position-relative">
+              <div class="icon"><i class="fas fa-tooth"></i></div>
+              <h3><a href="#" class="stretched-link">Dental Services</a></h3>
+              <p>Comprehensive dental care, including preventive, restorative, and cosmetic treatments.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <!-- Rehabilitation & Physiotherapy -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="800">
+            <div class="service-item position-relative">
+              <div class="icon"><i class="fas fa-wheelchair"></i></div>
+              <h3><a href="#" class="stretched-link">Physiotherapy & Rehabilitation</a></h3>
+              <p>Customized rehabilitation programs for injury recovery and pain management.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <!-- Pharmacy Services -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="900">
+            <div class="service-item position-relative">
+              <div class="icon"><i class="fas fa-pills"></i></div>
+              <h3><a href="#" class="stretched-link">Pharmacy Services</a></h3>
+              <p>Access to prescription medications and expert pharmaceutical consultation.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <!-- General Consultation -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="1000">
+            <div class="service-item position-relative">
+              <div class="icon"><i class="fas fa-user-md"></i></div>
+              <h3><a href="#" class="stretched-link">General Consultation</a></h3>
+              <p>Expert medical consultations across various specialties for personalized healthcare.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+        </div>
+      </div>
+    </section><!-- /Services Section -->
+
+    <!-- Appointment Section -->
+    <section id="appointment" class="appointment section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Appointment</h2>
+        <p>Let's schedule your appointment at your earliest convenience.</p>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <!-- Check if user is authenticated -->
+        {% if user.is_authenticated %}
+          <form action="{% url 'appointment' %}" method="post" role="form" class="php-email-form">
+            {% csrf_token %}
+            <div class="row">
+              <div class="col-md-4 form-group">
+                <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+              </div>
+              <div class="col-md-4 form-group mt-3 mt-md-0">
+                <input type="email" name="email" class="form-control" placeholder="Your Email" required>
+              </div>
+              <div class="col-md-4 form-group mt-3 mt-md-0">
+                <input type="tel" name="phone" class="form-control" placeholder="Your Phone" required>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-4 form-group mt-3">
+                <input type="date" name="date" class="form-control datepicker" required>
+              </div>
+              <div class="col-md-4 form-group mt-3">
+                <select name="department" id="department" class="form-select" required>
+                  <option value="">Select Department</option>
+
+                  {% for department in departments %}
+                    {% for doctor in doctors %}
+                      {% if doctor.department_id == department.id %}
+                      <option value="{{ department.id }}">{{ department.name }} - {{ doctor.name }}</option>
+                      {% endif %}
+                    {% endfor %}
+                  {% endfor %}
+                </select>
+              </div>
+
+              <div class="col-md-4 form-group mt-3">
+                <select name="doctor" id="doctor" class="form-select" required>
+                  <option value="">Select Doctor</option>
+
+                  {% for doctor in doctors %}
+                    <option value="{{ doctor.id }}">{{ doctor.name }}</option>
+                  {% endfor %}
+
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group mt-3">
+              <textarea name="message" class="form-control" rows="5" placeholder="Message (Optional)"></textarea>
+            </div>
+
+            <div class="mt-3">
+              <div class="loading">Loading</div>
+              <div class="error-message"></div>
+              <div class="sent-message">Your appointment request has been sent successfully. Thank you!</div>
+              <div class="text-center"><button type="submit">Make an Appointment</button></div>
+            </div>
+
+          </form>
+        {% else %}
+          <div class="alert alert-warning text-center" data-aos="fade-up" data-aos-delay="200">
+            <p>You need to <a href="{% url 'login' %}" class="text-primary">log in</a> to make an appointment.</p>
+          </div>
+        {% endif %}
+
+      </div>
+
+    </section><!-- /Appointment Section -->
+
+    <!-- Departments Section -->
+    <section id="departments" class="departments section">
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Departments</h2>
+        <p>Your health is our priority. Compassionate care for a healthier future.</p>
+      </div><!-- End Section Title -->
+    
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row">
+          <div class="col-lg-3">
+            <ul class="nav nav-tabs flex-column" id="departmentTabs">
+              {% for department in departments %}
+                <li class="nav-item">
+                  <a class="nav-link {% if forloop.first %}active{% endif %}" data-bs-toggle="tab" href="#department-{{ department.id }}">
+                    {{ department.name }}
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+    
+          <div class="col-lg-9 mt-4 mt-lg-0">
+            <div class="tab-content">
+              {% for department in departments %}
+                <div class="tab-pane fade {% if forloop.first %}show active{% endif %}" id="department-{{ department.id }}">
+                  <div class="row">
+                    <div class="col-lg-8 details order-2 order-lg-1">
+                      <h3>{{ department.name }}</h3>
+                      <p class="fst-italic">{{ department.description }}</p>
+                    </div>
+                    <div class="col-lg-4 text-center order-1 order-lg-2">
+                      <img src="{{ department.department_image.url }}" alt="{{ department.name }}" class="img-fluid">
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- /Departments Section -->
+
+    <!-- Doctors Section -->
+    <section id="doctors" class="doctors section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Doctors</h2>
+        <p>Empowering health through expert care and dedication.</p>
+      </div><!-- End Section Title -->
+    
+        <div class="container">
+
+          <div class="row gy-4">
+            {% for doctor in doctors %}
+              <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                <div class="team-member d-flex align-items-start">
+                  <div class="pic"><img src="{{ doctor.doctor_image.url }}" class="img-fluid" alt="{{ doctor.name }}"></div>
+                  <div class="member-info">
+                    <h4>{{ doctor.name }}</h4>
+                    <span>{{ doctor.department.name }}</span>
+                    <p>{{ doctor.bio }}</p>
+                    <div class="social">
+                      <a href=""><i class="bi bi-twitter-x"></i></a>
+                      <a href=""><i class="bi bi-facebook"></i></a>
+                      <a href=""><i class="bi bi-instagram"></i></a>
+                      <a href=""> <i class="bi bi-linkedin"></i> </a>
+                    </div>
+                  </div>
+                </div>
+              </div><!-- End Team Member -->
+            {% endfor %}
+
+          </div>
+
+        </div>
+
+    </section><!-- /Doctors Section -->
+
+    <!-- Faq Section -->
+    <section id="faq" class="faq section light-background">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Frequently Asked Questions</h2>
+        <p>Find answers to common questions about our medical services, appointments, and patient care.</p>
+      </div><!-- End Section Title -->
+    
+      <div class="container">
+    
+        <div class="row justify-content-center">
+    
+          <div class="col-lg-10" data-aos="fade-up" data-aos-delay="100">
+    
+            <div class="faq-container">
+    
+              <div class="faq-item faq-active">
+                <h3>How can I book an appointment?</h3>
+                <div class="faq-content">
+                  <p>You can book an appointment through our online booking system on the website, by calling our reception, or by visiting the hospital in person.</p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div><!-- End Faq item-->
+    
+              <div class="faq-item">
+                <h3>Do you accept walk-in patients?</h3>
+                <div class="faq-content">
+                  <p>Yes, we accept walk-in patients; however, priority is given to those with scheduled appointments. Emergency cases are attended to immediately.</p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div><!-- End Faq item-->
+    
+              <div class="faq-item">
+                <h3>What insurance plans do you accept?</h3>
+                <div class="faq-content">
+                  <p>We accept most major insurance providers. Please check with our front desk or your insurance company for coverage details.</p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div><!-- End Faq item-->
+    
+              <div class="faq-item">
+                <h3>What should I bring for my first appointment?</h3>
+                <div class="faq-content">
+                  <p>Please bring your ID card, insurance details (if applicable), previous medical records, and a list of any medications you are currently taking.</p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div><!-- End Faq item-->
+    
+              <div class="faq-item">
+                <h3>Do you offer telemedicine consultations?</h3>
+                <div class="faq-content">
+                  <p>Yes, we offer telemedicine services for certain medical conditions. You can schedule a virtual consultation through our website or by calling our reception.</p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div><!-- End Faq item-->
+    
+              <div class="faq-item">
+                <h3>What are your hospital's visiting hours?</h3>
+                <div class="faq-content">
+                  <p>Our visiting hours are from 9 AM to 8 PM daily. However, ICU and special care units may have restricted visiting times.</p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div><!-- End Faq item-->
+    
+              <div class="faq-item">
+                <h3>How do I get my medical test results?</h3>
+                <div class="faq-content">
+                  <p>Test results are available through our patient portal, via email, or by visiting the hospital. Some reports may take 24-48 hours for processing.</p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div><!-- End Faq item-->
+    
+            </div>
+    
+          </div><!-- End Faq Column-->
+    
+        </div>
+    
+      </div>
+    
+    </section><!-- /Faq Section -->    
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials section">
+
+      <div class="container">
+
+        <div class="row align-items-center">
+
+          <div class="col-lg-5 info" data-aos="fade-up" data-aos-delay="100">
+            <h3>Testimonials</h3>
+            <p>
+              Our clients consistently express their satisfaction with our services. 
+              They commend our unwavering commitment to quality and excellence, noting how our solutions have 
+              positively transformed their experiences. With attention to detail and a focus on their needs, 
+              we strive to exceed expectations, and we’re proud to share their feedback
+            </p>
+          </div>
+
+          <div class="col-lg-7" data-aos="fade-up" data-aos-delay="200">
+
+            <div class="swiper init-swiper">
+              <script type="application/json" class="swiper-config">
+                {
+                  "loop": true,
+                  "speed": 600,
+                  "autoplay": {
+                    "delay": 5000
+                  },
+                  "slidesPerView": "auto",
+                  "pagination": {
+                    "el": ".swiper-pagination",
+                    "type": "bullets",
+                    "clickable": true
+                  }
+                }
+              </script>
+              <div class="swiper-wrapper">
+
+                <div class="swiper-slide">
+                  <div class="testimonial-item">
+                    <div class="d-flex">
+                      <img src="images/testimonials/testimonials-1.jpg" class="testimonial-img flex-shrink-0" alt="">
+                      <div>
+                        <h3>Saul Goodman</h3>
+                        <h4>Ceo &amp; Founder</h4>
+                        <div class="stars">
+                          <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                        </div>
+                      </div>
+                    </div>
+                    <p>
+                      <i class="bi bi-quote quote-icon-left"></i>
+                      <span>
+                        Saul is an exceptional leader with a keen eye for innovation and a deep commitment to excellence.
+                        His vision and strategic thinking have driven our company to new heights. 
+                        Working with him is truly inspiring, as he combines professionalism with a personal touch that makes every challenge an opportunity for growth.                      </span>
+                      <i class="bi bi-quote quote-icon-right"></i>
+                    </p>
+                  </div>
+                </div><!-- End testimonial item -->
+
+              </div>
+              <div class="swiper-pagination"></div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section><!-- /Testimonials Section -->
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Gallery</h2>
+        <p>Discover our commitment to excellence through captivating moments in patient care and community outreach.</p>
+      </div><!-- End Section Title -->
+
+      <div class="container-fluid" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row g-0">
+
+          <div class="col-lg-3 col-md-4">
+            <div class="gallery-item">
+              <a href="images/gallery/gallery-1.jpg" class="glightbox" data-gallery="images-gallery">
+                <img src="images/gallery/gallery-1.jpg" alt="" class="img-fluid">
+              </a>
+            </div>
+          </div><!-- End Gallery Item -->
+
+          <div class="col-lg-3 col-md-4">
+            <div class="gallery-item">
+              <a href="images/gallery/gallery-2.jpg" class="glightbox" data-gallery="images-gallery">
+                <img src="images/gallery/gallery-2.jpg" alt="" class="img-fluid">
+              </a>
+            </div>
+          </div><!-- End Gallery Item -->
+
+          <div class="col-lg-3 col-md-4">
+            <div class="gallery-item">
+              <a href="images/gallery/gallery-3.jpg" class="glightbox" data-gallery="images-gallery">
+                <img src="images/gallery/gallery-3.jpg" alt="" class="img-fluid">
+              </a>
+            </div>
+          </div><!-- End Gallery Item -->
+
+          <div class="col-lg-3 col-md-4">
+            <div class="gallery-item">
+              <a href="images/gallery/gallery-4.jpg" class="glightbox" data-gallery="images-gallery">
+                <img src="images/gallery/gallery-4.jpg" alt="" class="img-fluid">
+              </a>
+            </div>
+          </div><!-- End Gallery Item -->
+
+          <div class="col-lg-3 col-md-4">
+            <div class="gallery-item">
+              <a href="images/gallery/gallery-5.jpg" class="glightbox" data-gallery="images-gallery">
+                <img src="images/gallery/gallery-5.jpg" alt="" class="img-fluid">
+              </a>
+            </div>
+          </div><!-- End Gallery Item -->
+
+          <div class="col-lg-3 col-md-4">
+            <div class="gallery-item">
+              <a href="images/gallery/gallery-6.jpg" class="glightbox" data-gallery="images-gallery">
+                <img src="images/gallery/gallery-6.jpg" alt="" class="img-fluid">
+              </a>
+            </div>
+          </div><!-- End Gallery Item -->
+
+          <div class="col-lg-3 col-md-4">
+            <div class="gallery-item">
+              <a href="images/gallery/gallery-7.jpg" class="glightbox" data-gallery="images-gallery">
+                <img src="images/gallery/gallery-7.jpg" alt="" class="img-fluid">
+              </a>
+            </div>
+          </div><!-- End Gallery Item -->
+
+          <div class="col-lg-3 col-md-4">
+            <div class="gallery-item">
+              <a href="images/gallery/gallery-8.jpg" class="glightbox" data-gallery="images-gallery">
+                <img src="images/gallery/gallery-8.jpg" alt="" class="img-fluid">
+              </a>
+            </div>
+          </div><!-- End Gallery Item -->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Gallery Section -->
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Contact</h2>
+        <p>Reach out for expert guidance and compassionate support.</p>
+      </div><!-- End Section Title -->
+    
+      <div class="mb-5" data-aos="fade-up" data-aos-delay="200">
+        <iframe style="border:0; width: 100%; height: 270px;" 
+          src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d48389.78314118045!2d-74.006138!3d40.710059!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a22a3bda30d%3A0xb89d1fe6bc499443!2sDowntown%20Conference%20Center!5e0!3m2!1sen!2sus!4v1676961268712!5m2!1sen!2sus" 
+          frameborder="0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div><!-- End Google Maps -->
+    
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+    
+        <div class="row gy-4">
+    
+          <div class="col-lg-4">
+            <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
+              <i class="bi bi-geo-alt flex-shrink-0"></i>
+              <div>
+                <h3>Location</h3>
+                <p>123 Health Avenue, New York, NY 10001</p>
+              </div>
+            </div><!-- End Info Item -->
+    
+            <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
+              <i class="bi bi-telephone flex-shrink-0"></i>
+              <div>
+                <h3>Call Us</h3>
+                <p>+1 555-1234-567</p>
+              </div>
+            </div><!-- End Info Item -->
+    
+            <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="500">
+              <i class="bi bi-envelope flex-shrink-0"></i>
+              <div>
+                <h3>Email Us</h3>
+                <p>contact@medilab.com</p>
+              </div>
+            </div><!-- End Info Item -->
+    
+          </div>
+    
+          <div class="col-lg-8">
+            <!-- Check if user is authenticated -->
+            {% if user.is_authenticated %}
+              <form action="{% url 'contact' %}" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
+                {% csrf_token %}
+                <div class="row gy-4">
+    
+                  <div class="col-md-6">
+                    <input type="text" name="name" class="form-control" placeholder="Your Name" required="">
+                  </div>
+    
+                  <div class="col-md-6 ">
+                    <input type="email" class="form-control" name="email" placeholder="Your Email" required="">
+                  </div>
+    
+                  <div class="col-md-12">
+                    <input type="text" class="form-control" name="subject" placeholder="Subject" required="">
+                  </div>
+    
+                  <div class="col-md-12">
+                    <textarea class="form-control" name="message" rows="6" placeholder="Message" required=""></textarea>
+                  </div>
+    
+                  <div class="col-md-12 text-center">
+                    <div class="loading">Loading</div>
+                    <div class="error-message"></div>
+                    <div class="sent-message">Your message has been sent. Thank you!</div>
+    
+                    <button type="submit">Send Message</button>
+                  </div>
+    
+                </div>
+              </form>
+            {% else %}
+              <div class="alert alert-warning text-center" data-aos="fade-up" data-aos-delay="200">
+                <p>You need to <a href="{% url 'login' %}" class="text-primary">log in</a> to submit the contact form.</p>
+              </div>
+            {% endif %}
+          </div><!-- End Contact Form -->
+    
+        </div>
+    
+      </div>
+    
+    </section><!-- /Contact Section -->
+
+
+  </main>
+
+    <footer id="footer" class="footer light-background">
+
+      <div class="container footer-top">
+        <div class="row gy-4">
+          
+          <div class="col-lg-4 col-md-6 footer-about">
+            <a href="index.html" class="logo d-flex align-items-center">
+              <span class="sitename">MediLab</span>
+            </a>
+            <div class="footer-contact pt-3">
+              <p>123 Health Avenue</p>
+              <p>New York, NY 10001</p>
+              <p class="mt-3"><strong>Phone:</strong> <span>+1 555-1234-567</span></p>
+              <p><strong>Email:</strong> <span>contact@medilab.com</span></p>
+            </div>
+            <div class="social-links d-flex mt-4">
+              <a href="#"><i class="bi bi-twitter-x"></i></a>
+              <a href="#"><i class="bi bi-facebook"></i></a>
+              <a href="#"><i class="bi bi-instagram"></i></a>
+              <a href="#"><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+    
+          <div class="col-lg-2 col-md-3 footer-links">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="#hero">Home</a></li>
+              <li><a href="#about">About Us</a></li>
+              <li><a href="#services">Services</a></li>
+              <li><a href="#faq">FAQs</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+    
+          <div class="col-lg-2 col-md-3 footer-links">
+            <h4>Medical Services</h4>
+            <ul>
+              <li><a href="#services">General Consultation</a></li>
+              <li><a href="#services">Diagnostic Imaging</a></li>
+              <li><a href="#services">Dental Services</a></li>
+              <li><a href="#services">Physiotherapy</a></li>
+              <li><a href="#services">Pharmacy Services</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-2 col-md-3 footer-links">
+            <h4>Departments</h4>
+            <ul>
+              <li><a href="#departments">Emergency Medicine</a></li>
+              <li><a href="#departments">Pediatrics</a></li>
+              <li><a href="#departments">Cardiology</a></li>
+              <li><a href="#departments">Oncology</a></li>
+              <li><a href="#departments">Orthopedics</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-2 col-md-3 footer-links">
+            <h4>Our Doctors</h4>
+            <ul>
+              <li><a href="#doctors">Dr. Emily Carter</a></li>
+              <li><a href="#doctors">Dr. Michael Reyes</a></li>
+              <li><a href="#doctors">Dr. Sarah Patel</a></li>
+              <li><a href="#doctors">Dr. James Thompson</a></li>
+              <li><a href="#doctors">Dr. Laura Kim</a></li>
+            </ul>
+          </div>
+    
+          <div class="col-lg-4 col-md-6 footer-newsletter">
+            <h4>Subscribe to Our Newsletter</h4>
+            <p>Stay updated with the latest health news and medical services.</p>
+            <form action="#" method="post">
+              <input type="email" name="email" placeholder="Enter your email">
+              <button type="submit">Subscribe</button>
+            </form>
+          </div>
+    
+        </div>
+      </div>
+    
+      <div class="container copyright text-center mt-4">
+        <p>© <span>Copyright</span> <strong class="px-1 sitename">MediLab</strong> <span>All Rights Reserved</span></p>
+      </div>
+    
+    </footer>
+  
+  
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+{% endblock content %}

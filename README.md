@@ -2,7 +2,9 @@
 > **A Complete Healthcare Solution Built with Django & Plain HTML, CSS, JavaScript**  
 
 """
-    You can check the template of the application to get an upfront glimpses of the site from frontend template of the 'MEDILAB'.
+    You can check the template of the application from Medilab-template.zip 
+    file to get upfront glimpses of the site by having interactions with 
+    the 'MEDILAB'.
 """
 
 ## 🌟 Introduction  

@@ -1,7 +1,9 @@
 # 🏥 MediLab - Healthcare Management System  
 > **A Complete Healthcare Solution Built with Django & Plain HTML, CSS, JavaScript**  
 
-![MediLab Banner](https://via.placeholder.com/1200x400)  
+"""
+    You can check the template of the application to get an upfront glimpses of the site from frontend template of the 'MEDILAB'.
+"""
 
 ## 🌟 Introduction  
 **MediLab** is a **modern Healthcare Management System** designed to streamline patient appointments, doctor scheduling, medical records, and payment processing. Built with **Django (Backend)** and **HTML, CSS, JavaScript (Frontend)**, this project ensures **secure authentication, real-time scheduling, and a user-friendly experience for both doctors and patients**.  
@@ -50,12 +52,12 @@ MediLab/
 Follow these steps to run the project on your local machine.  
 
 1️⃣ Clone the Repository  
-git clone https://github.com/your-username/medilab.git
+git clone https://github.com/Immuhammadfaizan/Medilab---Medical-Platform.git
 cd medilab
 
 2️⃣ Create Virtual Environment
-python -m venv venv
-source venv/bin/activate   # On Windows: venv\Scripts\activate
+python -m venv env
+source env/bin/activate   # On Windows: venv\Scripts\activate
 
 3️⃣ Install Dependencies
 pip install -r requirements.txt
@@ -101,8 +103,6 @@ class Appointment(models.Model):
     date = models.DateField()
     time = models.TimeField()
     status = models.CharField(max_length=20, choices=[('Scheduled', 'Scheduled'), ('Completed', 'Completed')])
-🎨 Frontend UI Preview
-
 
 
 🌍 Deployment
@@ -134,9 +134,9 @@ This project is licensed under the MIT License.
 
 💼 Hire Me!
 Muhammad Faizan - Backend Developer
-📧 Email: your.email@example.com
+📧 Email: muhammadfaizanlite@gmail.com
 🔗 Portfolio: faizan.dev
-💻 LinkedIn: Faizan's LinkedIn
+💻 LinkedIn: Muhammad Faizan
 
 🎯 If you like this project, give it a ⭐ on GitHub!
 ---
